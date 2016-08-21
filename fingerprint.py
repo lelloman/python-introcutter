@@ -8,10 +8,9 @@ def make_fingerprint(wave_filename):
     """
     create a fingerprint from a wav file, it consists
     of a list of the loudest frequencies for each frame
-    of the audio file. also saved it to file
+    of the audio file
 
     :param wave_filename: path of the source wav file
-    :param dst_filename: path of the file to save the fp
     :return: the generated fp
     """
     w = WaveWrap(wave_filename)
