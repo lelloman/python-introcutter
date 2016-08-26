@@ -26,7 +26,7 @@ INTRO_DURATION_S = 27
 
 
 # all videos found here will be converted
-INPUT_DIR = '/home/lelloman/Downloads/Futurama Season 1'
+INPUT_DIR = '/home/lelloman/Downloads/Futurama Season 2'
 # place to store all new videos without intro
 OUTPUT_DIR = '/home/lelloman/PycharmProjects/intro-cutter/output'
 # rename new files with this string + the old name

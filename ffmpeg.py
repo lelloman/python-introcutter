@@ -18,7 +18,7 @@ def make_tmp_filename(file_for_ext=''):
     :return: the full path of a file in tmp directory
     """
     return os.path.join(TMP_DIR, ''.join([choice(string.lowercase) for _ in range(24)]))\
-            + (ext(file_for_ext) if file_for_ext else '')
+        + (ext(file_for_ext) if file_for_ext else '')
 
 
 def ext(filename):
@@ -31,7 +31,7 @@ def ext(filename):
 
 def extract_video_chunk(source_file, dst_file, start_s, duration_s):
     """
-    extract a chunk of a video at the given positioni and save it to file
+    extract a chunk of a video at the given position and save it to file
 
     :param source_file: path of the source video file
     :param dst_file: path of the file to be created

@@ -25,7 +25,7 @@ intro_wav = extract_audio_chunk(INTRO_VIDEO_FILE, tmp() + '.wav', INTRO_START_S,
 fp = make_fingerprint(intro_wav)
 
 k = AUDIO_FRAME_RATE / float(AUDIO_WINDOW_SIZE)
-fp_duration = len(fp) / k
+fp_duration_seconds = len(fp) / k
 
 # iterate all video file
 log = ''
@@ -41,7 +41,7 @@ for video in os.listdir(INPUT_DIR):
     match = find_fingerpint_in_file(fp, target_wav)
     log += 'index {:9} - value {:18} {:06.2f}s - {}\n'.format(match[0], match[1], match[0] / k, video)
 
-    remove_chunk_from_video(os.path.join(INPUT_DIR, video), os.path.join(OUTPUT_DIR, OUTPUT_PREFIX+video), int(match[0] / k), fp_duration)
+    remove_chunk_from_video(os.path.join(INPUT_DIR, video), os.path.join(OUTPUT_DIR, OUTPUT_PREFIX+video), int(match[0] / k), fp_duration_seconds)
 
 with open('log.txt', 'w') as f:
     f.write(log)

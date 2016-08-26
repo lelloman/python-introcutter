@@ -27,8 +27,6 @@ class WaveWrap(object):
         self.cursor = 1
         self.n_windows = self.length / window_size
 
-        print "WaveWrap<{}> length {}".format(filename, self.length)
-
     def has_next(self):
         """
         :return: if it's safe to read the next window
