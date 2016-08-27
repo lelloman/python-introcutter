@@ -5,7 +5,7 @@ Problem: you've just (very legally) downloaded the new season of your favourite 
 
 Solution: open one episode, take note of starting time and duration of the intro, insert the value in the script and run it, it'll generate a copy of all the episodes without the intro.
 
-prerequesites: 
+prerequisites:
 - python 2.7 (maybe works with python 3 who knows...)
 - numpy
 - ffmpeg installed systemwise or executable as stand alone

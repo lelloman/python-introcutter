@@ -49,7 +49,7 @@ def compare_fingerprints(fp1, fp2):
     return s
 
 
-def find_fingerpint_in_file(fp, target_filename):
+def find_fingerprint_in_file(fp, target_filename):
     """
     given a fingerprint and an audio file, it search the position
     in the audio file with the highest similarity with the fingerprint

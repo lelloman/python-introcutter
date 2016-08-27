@@ -1,3 +1,4 @@
+from __future__ import print_function
 import wave
 import numpy as np
 from struct import unpack
@@ -40,7 +41,7 @@ class WaveWrap(object):
         try:
             wave_data = self.wave_file.readframes(self.window_size)
         except Exception as e:
-            print e.message
+            print(e.message)
             wave_data = np.zeros(self.window_size)
         self.cursor += 1
         return unpack(self.unpack_fmt, wave_data)

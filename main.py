@@ -13,9 +13,9 @@ main routine of the intro cutter.
 4 - log and clean up
 
 """
-
+from __future__ import print_function
 import os
-from fingerprint import make_fingerprint, find_fingerpint_in_file
+from fingerprint import make_fingerprint, find_fingerprint_in_file
 from ffmpeg import make_tmp_filename as tmp, ext, extract_audio_chunk, get_video_duration, remove_chunk_from_video
 from conf import *
 
@@ -38,14 +38,16 @@ for video in os.listdir(INPUT_DIR):
     target_wav = extract_audio_chunk(os.path.join(INPUT_DIR, video), tmp() + ".wav", 0, duration)
 
     # compare the fingerprint with the audio extracted from the video
-    match = find_fingerpint_in_file(fp, target_wav)
+    match = find_fingerprint_in_file(fp, target_wav)
     log += 'index {:9} - value {:18} {:06.2f}s - {}\n'.format(match[0], match[1], match[0] / k, video)
 
-    remove_chunk_from_video(os.path.join(INPUT_DIR, video), os.path.join(OUTPUT_DIR, OUTPUT_PREFIX+video), int(match[0] / k), fp_duration_seconds)
+    input_video = os.path.join(INPUT_DIR, video)
+    output_video = os.path.join(OUTPUT_DIR, OUTPUT_PREFIX+video)
+    remove_chunk_from_video(input_video, output_video, int(match[0] / k), fp_duration_seconds)
 
 with open('log.txt', 'w') as f:
     f.write(log)
-print log
+print(log)
 
 if CLEAN_TMP:
     for ele in os.listdir(TMP_DIR):

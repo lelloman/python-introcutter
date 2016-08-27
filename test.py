@@ -216,7 +216,7 @@ def run_test():
 
     print('track\tindex\tmatch v\t\tactual\t\texpected')
     for test in test_cases:
-        match = fingerprint.find_fingerpint_in_file(fp, TEST_TRACK.format(test['i']))
+        match = fingerprint.find_fingerprint_in_file(fp, TEST_TRACK.format(test['i']))
         test['actual'] = K * match[0]
         print('{}\t{:9d}\t{}\t{:8.2f}\t{:8.2f}'.format(test['i'], match[0], match[1], test['actual'], test['expected']))
 
