@@ -1,3 +1,6 @@
+import sys
+import os
+
 
 # frame rate that will be used for all wav files
 AUDIO_FRAME_RATE = 22050
@@ -11,6 +14,11 @@ VIDEO_EXT = ['avi', 'mkv', 'flv', 'wmv', 'mp4', 'm4v', 'mpeg', 'mpg']
 TMP_DIR = '/home/lelloman/PycharmProjects/intro-cutter/tmp'
 # since i'm using a common folder it's better to clean it
 CLEAN_TMP = True
+# hide ffmpeg command output from terminal
+VERBOSE = False
+STD_OUT = sys.stdout if VERBOSE else open(os.devnull, 'w')
+STD_ERR = sys.stderr if VERBOSE else open(os.devnull, 'w')
+
 # command to invoke ffmpeg
 FFMPEG = 'ffmpeg'
 # command to invoke ffprobe
@@ -26,8 +34,9 @@ INTRO_DURATION_S = 27
 
 
 # all videos found here will be converted
-INPUT_DIR = '/home/lelloman/Downloads/Futurama Season 2'
+INPUT_DIR = '/home/lelloman/Downloads/Futurama Season 2 (copy)'
 # place to store all new videos without intro
 OUTPUT_DIR = '/home/lelloman/PycharmProjects/intro-cutter/output'
 # rename new files with this string + the old name
 OUTPUT_PREFIX = 'nointro_'
+

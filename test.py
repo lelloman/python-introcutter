@@ -1,3 +1,4 @@
+#!/usr/bin/python
 """
 a simple test to check that every piece is in place
 

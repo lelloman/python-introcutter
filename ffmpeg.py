@@ -4,9 +4,8 @@ A set of functions that wrap useful ffmpeg commands
 
 import string
 import re
-import os
 from random import choice
-from subprocess import check_call, check_output
+from subprocess import check_call, Popen, PIPE
 from conf import *
 
 
@@ -45,7 +44,7 @@ def extract_video_chunk(source_file, dst_file, start_s, duration_s):
         '-ss', str(start_s),
         '-t', str(duration_s),
         '-c', 'copy',
-        dst_file])
+        dst_file], stdout=STD_OUT, stderr=STD_OUT)
     return dst_file
 
 
@@ -63,7 +62,7 @@ def extract_audio(source_file, dst_file, sample_rate=AUDIO_FRAME_RATE):
         '-acodec', 'pcm_s16le',
         '-ar', str(sample_rate),
         '-ac', '1',
-        dst_file])
+        dst_file], stdout=STD_OUT, stderr=STD_OUT)
     return dst_file
 
 
@@ -92,7 +91,8 @@ def get_video_duration(filename):
     :param filename: path of the target video
     :return: duration in seconds of the video
     """
-    return float(re.findall(r'.*duration=([0-9.]+)\D', check_output([FFPROBE, '-i', filename, '-show_format']))[0])
+    p = Popen([FFPROBE, '-i', filename, '-show_format'], stdout=PIPE, stderr=PIPE)
+    return float(re.findall(r'.*duration=([0-9.]+)\D', p.stdout.read())[0])
 
 
 def concat_videos(source_file1, source_file2, dst_file):
@@ -110,7 +110,7 @@ def concat_videos(source_file1, source_file2, dst_file):
     with open(tmp, 'w') as f:
         f.write("file '{}'\nfile '{}'".format(source_file1, source_file2))
 
-    check_call([FFMPEG, '-f', 'concat', '-i', tmp, '-c', 'copy', dst_file])
+    check_call([FFMPEG, '-f', 'concat', '-i', tmp, '-c', 'copy', dst_file], stdout=STD_OUT, stderr=STD_OUT)
 
 
 def remove_chunk_from_video(source_file, dst_file, start_s, duration_s):
