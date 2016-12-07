@@ -58,7 +58,8 @@ def extract_audio(source_file, dst_file, sample_rate=AUDIO_FRAME_RATE):
     :return: the path of the output file
     """
     check_call([
-        FFMPEG, '-i', source_file,
+        FFMPEG,
+	'-i', source_file,
         '-acodec', 'pcm_s16le',
         '-ar', str(sample_rate),
         '-ac', '1',
@@ -110,7 +111,7 @@ def concat_videos(source_file1, source_file2, dst_file):
     with open(tmp, 'w') as f:
         f.write("file '{}'\nfile '{}'".format(source_file1, source_file2))
 
-    check_call([FFMPEG, '-f', 'concat', '-i', tmp, '-c', 'copy', dst_file], stdout=STD_OUT, stderr=STD_OUT)
+    check_call([FFMPEG, '-f', 'concat', '-safe', '0', '-i', tmp, '-c', 'copy', dst_file], stdout=STD_OUT, stderr=STD_OUT)
 
 
 def remove_chunk_from_video(source_file, dst_file, start_s, duration_s):
