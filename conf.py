@@ -11,7 +11,7 @@ VIDEO_EXT = ['avi', 'mkv', 'flv', 'wmv', 'mp4', 'm4v', 'mpeg', 'mpg']
 
 
 # place to store trash
-TMP_DIR = '/home/lelloman/PycharmProjects/intro-cutter/tmp'
+TMP_DIR = '/home/lelloman/PycharmProjects/python-introcutter/tmp'
 # since i'm using a common folder it's better to clean it
 CLEAN_TMP = True
 # hide ffmpeg command output from terminal
@@ -36,7 +36,7 @@ INTRO_DURATION_S = 27
 # all videos found here will be converted
 INPUT_DIR = '/home/lelloman/Downloads/Futurama Season 2 (copy)'
 # place to store all new videos without intro
-OUTPUT_DIR = '/home/lelloman/PycharmProjects/intro-cutter/output'
+OUTPUT_DIR = '/home/lelloman/PycharmProjects/python-introcutter/output'
 # rename new files with this string + the old name
 OUTPUT_PREFIX = 'nointro_'
 

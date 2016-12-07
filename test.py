@@ -30,6 +30,7 @@ import wave
 from struct import pack
 from math import sin, pi
 from random import randint
+from os.path import isdir
 import fingerprint
 import conf
 
@@ -203,6 +204,12 @@ def make_test_cases(n, intro):
 
 
 def run_test():
+
+    if not isdir(conf.TMP_DIR):
+        raise Exception("TMP_DIR {} does not exist!".format(conf.TMP_DIR))
+
+    if not isdir(conf.OUTPUT_DIR):
+        raise Exception("OUTPUT_DIR {} does not exist!".format(conf.OUTPUT_DIR))
 
     intro = make_track('x')
     write_wave_file(TEST_INTRO, intro)
