@@ -10,7 +10,7 @@ prerequisites:
 - numpy
 - ffmpeg installed systemwise or executable as stand alone
 
-tested with python 2.7 and ffmpeg 2.8.6-1ubuntu2 on ubuntu 16.04 with futurama and stranger things
+tested with python 2.7 and ffmpeg 3.0.2-1ubuntu3 on ubuntu 16.04 with futurama and stranger things
 
 before running [main.py](https://github.com/lelloman/python-introcutter/blob/master/main.py), you need to set some values in [conf.py](https://github.com/lelloman/python-introcutter/blob/master/conf.py)
 - ```TMP_DIR``` a dir to store temporary files, all files in this dir will be deleted at the end
